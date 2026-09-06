@@ -1,0 +1,7 @@
+if (!requireNamespace("logistf", quietly = TRUE)) install.packages("logistf", repos = "https://cloud.r-project.org", quiet = TRUE)
+source("R/closedform_engine.R"); set.seed(11)
+n <- 500; p <- 5; b0 <- c(.5, -.4, .3, -.3, .2); X <- matrix(rnorm(n * p), n); y <- rbinom(n, 1, plogis(X %*% b0))
+pf <- cf_pieces_penalty(X, y, cf_penalty("firth"))
+ok <- requireNamespace("logistf", quietly = TRUE)
+if (ok) { lf <- logistf::logistf(y ~ X, pl = FALSE); cat(sprintf("FIRTH CHECK: max|beta_ours - logistf| = %.2e\n", max(abs(pf$beta - coef(lf))))) } else cat("FIRTH CHECK: logistf could not be installed\n")
+cat("ours   :", sprintf("%.4f", pf$beta), "\n"); if (ok) cat("logistf:", sprintf("%.4f", coef(lf)), "\n")

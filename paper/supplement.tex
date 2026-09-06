@@ -1,0 +1,102 @@
+% =====================================================================
+%  Supplementary material for the CALM paper.  Compile: pdflatex supplement (x2).
+% =====================================================================
+\documentclass[namedate,webpdf,modern,mediumone]{oup-authoring-template}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\newcommand{\societylogo}{}
+\graphicspath{{Fig/}}
+
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\bb}{\boldsymbol{\beta}}
+\newcommand{\bbh}{\hat{\boldsymbol{\beta}}}
+\newcommand{\bbt}{\tilde{\boldsymbol{\beta}}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\Om}{\Omega}
+
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+
+\begin{document}
+
+\journaltitle{Journal of the Royal Statistical Society Series B}
+\DOI{}
+\copyrightyear{2026}
+\pubyear{2026}
+\vol{00}
+\issue{0}
+\access{}
+\appnotes{Supplementary material}
+\firstpage{1}
+
+\title[Supplementary material]{Supplementary material for ``A closed-form reference distribution
+for goodness-of-fit testing under penalised logistic regression in the proportional regime''}
+
+\author[1]{Ebrahim Khaled Ebrahim}
+\address[1]{\orgdiv{Department of Applied Statistics},
+\orgname{Alexandria University}, \orgaddress{\country{Egypt}}}
+
+\abstract{This document reports the material referred to in the paper: the behaviour of the
+correction under penalties other than the ridge.}
+
+\keywords{calibration; goodness-of-fit; penalised regression}
+
+\maketitle
+
+\section{Penalties other than the ridge}\label{sup:penalties}
+
+Nothing in Sections~2--4 of the paper uses the linearity of the ridge penalty.
+If a smooth penalty contributes a score term $\boldsymbol{a}(\bb)$ with $K(\bb) = -\partial
+\boldsymbol{a}/\partial\bb$, then $\bbt = \bbh - F^{-1}\boldsymbol{a}(\bbh)$, $\hat\bmu =
+-UM^{-1}\boldsymbol{a}(\bbt)$ and Theorem~1 of the paper go through with $K$ evaluated at
+$\bbh$ (Ebrahim, 2026, Remark~2). We implemented this for the generalised ridge
+penalty $\sum_j \theta_j\beta_j^{2}$ and for Firth's penalty (Firth, 1993), whose score
+contribution is the Jeffreys term $a_j(\bb) = \tfrac12\tr(F^{-1}\partial F/\partial\beta_j)$ and
+which is the standard response to separation in clinical prediction (Puhr et al., 2017); the Firth
+fit agrees with the \texttt{logistf} package (Heinze and Schemper, 2002) to $2\times10^{-8}$.
+
+Table~\ref{tab:suppenalty} makes three points. Under the generalised ridge the picture is the ridge
+picture: the uncorrected test rejects almost every correct model, the first-order reference is
+conservative by the deflation of Theorem~1 of the paper (ratio $0.91$ at fixed $p$ and $0.83$ at
+$\kappa = 0.25$), and the variance at the debiased fit restores the level at fixed $p$ ($0.060$ and
+$0.047$) and leaves at $\kappa = 0.25$ the same two-to-three-point excess ($0.080$ and $0.070$)
+that Section~4 of the paper treats. Under Firth's penalty at fixed $p$ there is nothing to correct:
+the Jeffreys term is $O(n^{-1})$, the displacement is negligible, and the three references coincide
+at $0.067$ on the decile basis and $0.053$ on the EDGE basis. At $\kappa = 0.25$ Firth's penalty is
+not a shrinkage penalty. The fitted coefficient norm is $3.51$ against a true value of $2.31$, the
+proportional-regime inflation of Sur and Cand\`es (2019) that an $O(n^{-1})$ bias reduction does not
+touch, and the one-step debiasing moves further away from the truth ($4.75$), so the corrected
+references reject $12$ to $32$ per cent of correct models and the uncorrected test $99$ per cent.
+The framework of this paper is for estimators that shrink towards zero. For bias-reduced
+estimators in the proportional regime the reference would have to be built on the inflation
+rather than on the displacement, and we leave that open.
+
+\begin{table}[!t]
+\centering
+\small
+\caption{Rejection rate of a correctly specified model at nominal level $0.05$ under three smooth penalties, designs A ($\lambda = 100$) and B ($\kappa = 0.25$, $\lambda = 416$; the generalised ridge uses $\theta_j = \lambda(1 + j/p)$): the uncorrected statistic under the maximum likelihood covariance, the corrected statistic under the first-order reference $\Om_{\mathrm{MLE}}$, and under the variance at the debiased fit $\Sigma_{\mathrm{d}}$; last column, the deflation ratio $\mathrm{E}(\mathrm{SC.HL})/\tr(\Om_{\mathrm{MLE}})$. $300$ replications per cell.}
+\label{tab:suppenalty}
+\begin{tabular}{llccccccc}
+\toprule
+& & \multicolumn{3}{c}{Decile basis} & \multicolumn{3}{c}{EDGE basis} & \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Design & penalty & uncorrected & first order & $\Sigma_{\mathrm{d}}$ & uncorrected & first order & $\Sigma_{\mathrm{d}}$ & deflation \\
+\midrule
+A & ridge & 0.937 & 0.027 & 0.043 & 1.000 & 0.023 & 0.043 & 0.91 \\
+A & generalised ridge & 0.997 & 0.030 & 0.060 & 1.000 & 0.017 & 0.047 & 0.93 \\
+A & Firth & 0.067 & 0.067 & 0.067 & 0.053 & 0.053 & 0.053 & 1.03 \\
+\addlinespace
+B, $\kappa = 0.25$ & ridge & 1.000 & 0.013 & 0.057 & 1.000 & 0.023 & 0.077 & 0.79 \\
+B, $\kappa = 0.25$ & generalised ridge & 1.000 & 0.023 & 0.080 & 1.000 & 0.027 & 0.070 & 0.83 \\
+B, $\kappa = 0.25$ & Firth & 0.987 & 0.117 & 0.317 & 1.000 & 0.127 & 0.297 & 1.15 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% =====================================================================
+
+\end{document}

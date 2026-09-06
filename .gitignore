@@ -1,0 +1,8 @@
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.synctex.gz
+paper_dump.txt
+*_backup.tex

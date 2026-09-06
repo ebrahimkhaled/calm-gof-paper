@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this material, please cite the paper."
+title: "Reproduction materials: A closed-form reference distribution for goodness-of-fit testing under penalised logistic regression"
+authors:
+  - family-names: Ebrahim
+    given-names: "Ebrahim Khaled"
+    orcid: "https://orcid.org/0009-0006-7839-8778"
+license: MIT
+repository-code: "https://github.com/ebrahimkhaled/calm-gof-paper"
+keywords:
+  - goodness-of-fit
+  - calibration
+  - penalised logistic regression
+  - ridge regression
+  - proportional regime
+  - high-dimensional statistics
+preferred-citation:
+  type: article
+  title: "A closed-form reference distribution for goodness-of-fit testing under penalised logistic regression in the proportional regime"
+  authors:
+    - family-names: Ebrahim
+      given-names: "Ebrahim Khaled"
+      orcid: "https://orcid.org/0009-0006-7839-8778"
+  year: 2026
