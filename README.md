@@ -1,6 +1,6 @@
 # Reproduction archive
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22467285.svg)](https://doi.org/10.5281/zenodo.22467285)
 
 
 **Paper:** A closed-form reference distribution for goodness-of-fit testing under penalised
