@@ -33,15 +33,15 @@
 \appnotes{Supplementary material}
 \firstpage{1}
 
-\title[Supplementary material]{Supplementary material for ``A closed-form reference distribution
-for goodness-of-fit testing under penalised logistic regression in the proportional regime''}
+\title[Supplementary material]{Supplementary material for ``A closed-form goodness-of-fit
+reference for penalised logistic regression in the proportional regime''}
 
 \author[1]{Ebrahim Khaled Ebrahim}
 \address[1]{\orgdiv{Department of Applied Statistics},
 \orgname{Alexandria University}, \orgaddress{\country{Egypt}}}
 
 \abstract{This document reports the material referred to in the paper: the behaviour of the
-correction under penalties other than the ridge.}
+correction under penalties other than the ridge, and under predictor laws other than the Gaussian.}
 
 \keywords{calibration; goodness-of-fit; penalised regression}
 
@@ -61,7 +61,7 @@ fit agrees with the \texttt{logistf} package (Heinze and Schemper, 2002) to $2\t
 
 Table~\ref{tab:suppenalty} makes three points. Under the generalised ridge the picture is the ridge
 picture: the uncorrected test rejects almost every correct model, the first-order reference is
-conservative by the deflation of Theorem~1 of the paper (ratio $0.91$ at fixed $p$ and $0.83$ at
+conservative by the deflation of Theorem~1 of the paper (ratio $0.93$ at fixed $p$ and $0.83$ at
 $\kappa = 0.25$), and the variance at the debiased fit restores the level at fixed $p$ ($0.060$ and
 $0.047$) and leaves at $\kappa = 0.25$ the same two-to-three-point excess ($0.080$ and $0.070$)
 that Section~4 of the paper treats. Under Firth's penalty at fixed $p$ there is nothing to correct:
@@ -97,6 +97,83 @@ B, $\kappa = 0.25$ & Firth & 0.987 & 0.117 & 0.317 & 1.000 & 0.127 & 0.297 & 1.1
 \end{tabular}
 \end{table}
 
+
+\section{Predictor laws other than the Gaussian}\label{sup:law}
+
+Assumption~2 of the paper requires Gaussian predictors. The table below repeats three cells
+with $t_3$ and standardised Bernoulli$(0.3)$ predictors, the correlation structure imposed
+through the same Cholesky factor, and reports the size of the de-noised reference and the
+estimated standard deviation of the linear predictor. Section~5.4 of the paper runs the whole
+procedure, rather than the reference alone, under the same two laws.
+
+\begin{table}[!t]
+\centering
+\caption{Size at nominal level $0.05$ of the de-noised reference $\Sigma_{\mathrm{dn}}$ under three predictor
+laws, decile and EDGE-3 bases, with the estimated standard deviation of the linear predictor
+(true values $0.79$ in design~A and $1.48$--$1.50$ in design~B). $400$ replications per cell.}
+\label{tab:suplaw}
+\begin{tabular}{llcccc}
+\toprule
+Design & law & decile & EDGE-3 & estimated s.d. \\
+\midrule
+A                  & Gaussian & 0.048 & 0.042 & 0.79 \\
+A                  & $t_3$    & 0.052 & 0.052 & 0.77 \\
+A                  & binary   & 0.058 & 0.060 & 0.80 \\
+\addlinespace
+B, $\kappa = 0.10$ & Gaussian & 0.060 & 0.045 & 1.45 \\
+B, $\kappa = 0.10$ & $t_3$    & 0.062 & 0.098 & 1.38 \\
+B, $\kappa = 0.10$ & binary   & 0.070 & 0.058 & 1.44 \\
+\addlinespace
+B, $\kappa = 0.25$ & Gaussian & 0.062 & 0.077 & 1.43 \\
+B, $\kappa = 0.25$ & $t_3$    & 0.055 & 0.065 & 1.37 \\
+B, $\kappa = 0.25$ & binary   & 0.080 & 0.052 & 1.43 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 % =====================================================================
+
+
+% =====================================================================
+\section{Nominal levels other than five per cent}\label{sup:levels}
+
+Every size table in the paper reports the rejection rate of a correct model at the single nominal
+level $0.05$, while Section~6 reads two p-values as magnitudes rather than as decisions at that
+level. Table~\ref{tab:levels} therefore repeats the check at $0.01$ and $0.10$, from the same
+replications; no new simulation is involved, and the per-replication p-values are in the
+reproduction archive.
+
+Across the twenty-five cells the adaptive statistic rejects between $0.000$ and $0.062$ of correct
+models at the one per cent level and between $0.030$ and $0.154$ at the ten per cent level, so its
+validity is not an artefact of the level at which it was examined; it is conservative in the far
+tail, returning no rejection in $500$ replications in three cells. The decile statistic behaves at
+$0.01$ as it does at $0.05$, including where it fails: in the design with covariate correlation
+$0.3$ it rejects $0.390$ of correct models at the one per cent level against $0.688$ at five per
+cent, so that failure is a property of the reference and not of a threshold.
+
+\begin{table}[!ht]
+\centering
+\small
+\caption{Rejection rate of a correctly specified model at three nominal levels, for the decile
+statistic (CALM-D) and the adaptive EDGE statistic (CALM-E). Seven of the twenty-five cells of
+Tables~2 and~3 of the paper, including the design in which the decile statistic is known to fail.
+$500$ replications per cell.}
+\label{tab:levels}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{CALM-D} & \multicolumn{3}{c}{CALM-E} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+Design & $0.01$ & $0.05$ & $0.10$ & $0.01$ & $0.05$ & $0.10$ \\
+\midrule
+A, $\kappa = 0.01$ & 0.008 & 0.046 & 0.096 & 0.016 & 0.050 & 0.072 \\
+B, $\kappa = 0.10$ & 0.008 & 0.060 & 0.110 & 0.002 & 0.040 & 0.094 \\
+B, $\kappa = 0.25$ & 0.006 & 0.052 & 0.102 & 0.000 & 0.028 & 0.060 \\
+B, $\kappa = 0.40$ & 0.010 & 0.036 & 0.088 & 0.004 & 0.018 & 0.048 \\
+B$'$, $\kappa = 0.33$ & 0.006 & 0.052 & 0.094 & 0.000 & 0.030 & 0.064 \\
+B$'$, $n = 800$, $\kappa = 0.25$ & 0.026 & 0.122 & 0.180 & 0.014 & 0.074 & 0.140 \\
+B$'$, correlation $0.3$ & 0.390 & 0.688 & 0.798 & 0.062 & 0.076 & 0.102 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \end{document}

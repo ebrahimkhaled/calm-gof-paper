@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this material, please cite the paper."
-title: "Reproduction materials: A closed-form reference distribution for goodness-of-fit testing under penalised logistic regression"
+title: "Reproduction materials: A closed-form goodness-of-fit reference for penalised logistic regression in the proportional regime"
 authors:
   - family-names: Ebrahim
     given-names: "Ebrahim Khaled"
@@ -17,7 +17,7 @@ keywords:
   - high-dimensional statistics
 preferred-citation:
   type: article
-  title: "A closed-form reference distribution for goodness-of-fit testing under penalised logistic regression in the proportional regime"
+  title: "A closed-form goodness-of-fit reference for penalised logistic regression in the proportional regime"
   authors:
     - family-names: Ebrahim
       given-names: "Ebrahim Khaled"

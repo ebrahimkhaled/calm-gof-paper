@@ -3,8 +3,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22467285.svg)](https://doi.org/10.5281/zenodo.22467285)
 
 
-**Paper:** A closed-form reference distribution for goodness-of-fit testing under penalised
-logistic regression in the proportional regime.
+**Paper:** A closed-form goodness-of-fit reference for penalised logistic regression in the proportional regime
 
 Everything in the paper and the supplement is produced by the scripts here. There is no hidden
 step: each table and figure names the file it comes from, and every simulation writes both a
